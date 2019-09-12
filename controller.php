@@ -4,20 +4,15 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <title> View</title>
+  <title> Control </title>
 </head>
 
 <body>
-  <?php 
-    function get_token($key = ''){
-      $_SESSION['key'] = $key;
-      return sha1($key);
+  <?php
+    $_SESSION['device']
+    if(sha1($_SESSION['key']) == $_SESSION['token']){
+       
     }
-    
-    $_SESSION['device'] = $_GET['number'];
-    $seed = session_id() .microtime();
-    $_SESSION['token'] = get_token($seed);
   ?>
-  <a class="btn btn-primary" href="http://localhost/controller.php"> 使う </a>
 </body>
 </html>
