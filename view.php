@@ -11,14 +11,17 @@ session_start();
 
 <body>
   <?php 
-    function get_token($key = ''){
-      $_SESSION['key'] = $key;
-      return sha1($key);
-    }
-    
-    $_SESSION['device'] = $_GET['number'];
-    $seed = session_id() .microtime();
-    $_SESSION['token'] = get_token($seed);
+
+  $seed = session_id();
+
+  function get_token($key = ''){
+    $_SESSION['key'] = $key;
+    return sha1($key);
+  }
+
+  $_SESSION['token'] = get_token($seed);
+  $_SESSION['device'] = $_GET['number'];
+
   ?>
   <a class="btn btn-primary" href="http://192.168.33.10/controller.php"> 使う </a>
 </body>

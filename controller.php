@@ -11,21 +11,29 @@ session_start();
 <body>
   <?php
     $file = "status.txt";
+    $device = $_SESSION['device'];
 
-      if (is_readable($file)){
+    $judge = sha1($_SESSION['key']) == $_SESSION['token']? 1 : 0;
 
-        $current_status = (int)file_get_contents($file);
+    if (is_readable($file) && $judge == 1){
 
-        $new_status = !$current_status;
-        print $new_status;
+      $current_status = file_get_contents($file);
 
-        file_put_contents($file, $new_status);
-
+      if ($current_status == $device){
+        $new_status = '0';
       } else {
-
-        print 'ファイルが読み込めませんでした';
-
+        $new_status = $device;
       }
+
+      print $new_status;
+
+      file_put_contents($file, $new_status);
+
+    } else {
+
+      print 'エラーが起きました。もう一度やり直してください。';
+
+    }
   ?>
 </body>
 </html>
