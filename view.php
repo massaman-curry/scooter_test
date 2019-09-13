@@ -1,4 +1,6 @@
-<?= session_start(); ?>
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,6 +20,6 @@
     $seed = session_id() .microtime();
     $_SESSION['token'] = get_token($seed);
   ?>
-  <a class="btn btn-primary" href="http://localhost/controller.php"> 使う </a>
+  <a class="btn btn-primary" href="http://192.168.33.10/controller.php"> 使う </a>
 </body>
 </html>

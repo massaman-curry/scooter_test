@@ -1,18 +1,31 @@
-<?= session_start(); ?>
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <title> Control </title>
 </head>
 
 <body>
   <?php
-    $_SESSION['device']
-    if(sha1($_SESSION['key']) == $_SESSION['token']){
-       
-    }
+    $file = "status.txt";
+
+      if (is_readable($file)){
+
+        $current_status = (int)file_get_contents($file);
+
+        $new_status = !$current_status;
+        print $new_status;
+
+        file_put_contents($file, $new_status);
+
+      } else {
+
+        print 'ファイルが読み込めませんでした';
+
+      }
   ?>
 </body>
 </html>
