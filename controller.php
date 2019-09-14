@@ -19,11 +19,7 @@ session_start();
 
       $current_status = file_get_contents($file);
 
-      if ($current_status == $device){
-        $new_status = '0';
-      } else {
-        $new_status = $device;
-      }
+      $new_status = $current_status == '0' ? $device : '0';
 
       print $new_status;
 
